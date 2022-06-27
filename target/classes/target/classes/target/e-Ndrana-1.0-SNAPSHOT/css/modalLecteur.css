@@ -1,0 +1,137 @@
+@font-face {
+    font-family: "Owl cute";
+    src: url("../assets/fonts/Owl-Cute.ttf");
+}
+
+
+.modalPopUp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1055;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    margin-top: -100%;
+}
+
+.modalPopUp.show {
+    margin-top: 100px;
+    z-index: 1000000000;
+    animation: modalappears .7s ease-in;
+}
+
+@keyframes modalappears {
+    0% {
+        margin-top: -100%;
+    }
+    50% {
+        margin-top: -25%;
+    }
+    70% {
+        margin-top: 25%;
+    }
+    100% {
+        margin-top: 100px;
+    }
+}
+
+.modalPopUp.fade {
+    margin-top: -100%;
+    animation: modaldesappears .5s ease-in;
+}
+
+
+@keyframes modaldesappears {
+    0% {
+        margin-top: 100px;
+    }
+    25% {
+        margin-top: 25%;
+    }
+    70% {
+        margin-top: -25%;
+    }
+    100% {
+        margin-top: -100%;
+    }
+}
+
+/**********
+Modal Detail
+ ************/
+
+.modalDeatilLecteurPopUp{
+    height: 100%;
+}
+
+.modal-title{
+    font-family: "Owl cute";
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+.btn-close-LecteurDetailModal,
+.btn-close-LecteurEditmodal{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+.modal-body{
+    padding: 20px;
+    margin: auto;
+}
+.modal-detail{
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+}
+
+.label-detail{
+    font-family: "AvantGarde Bk BT";
+    font-size: 18px;
+}
+
+
+
+/********* Modal Edit Lecteur **************/
+
+.modalEditLecteurPopUp .modal-body .form-group{
+    display: inline-block;
+    padding: 10px;
+    margin: 0 10%;
+    width: 100%;
+}
+
+.modalEditLecteurPopUp .form-group label{
+    font-size: 18px;
+    width: 90px;
+    font-family: "AvantGarde Bk BT";
+}
+
+.modalEditLecteurPopUp .modal-body .input_group{
+    display: inline-block;
+    max-width: 380px;
+}
+.modalEditLecteurPopUp .modal-body .input_group input{
+    width: 100%;
+}
+.modalEditLecteurPopUp .form-horizontal .form-container{
+    width: 100%;
+    margin: auto;
+}
+.modalEditLecteurPopUp .form-horizontal .button_group .btnConfirm,
+.modalEditLecteurPopUp .form-horizontal .button_group .btnCancel{
+    width: 150px!important;
+    font-size: 15px;
+}
+
+.modalEditLecteurPopUp .form-horizontal .button_group .btnConfirm{
+    background: #28a745!important;
+}
+.modalEditLecteurPopUp .form-horizontal .button_group .btnCancel{
+    background: #dc3545!important;
+}
