@@ -11,11 +11,10 @@
       <element id="artifact" artifact-name="e-Ndrana:war exploded" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="lib">
-          <element id="library" level="project" name="com.mysql.jdbc_5.1.5" />
-          <element id="library" level="project" name="jstl-1.2" />
           <element id="library" level="project" name="gson-2.8.2" />
+          <element id="library" level="project" name="jstl-1.2" />
           <element id="library" level="project" name="lib" />
-          <element id="library" level="project" name="j2ee" />
+          <element id="library" level="project" name="com.mysql.jdbc_5.1.5" />
         </element>
       </element>
     </root>
