@@ -100,10 +100,10 @@ Modal Detail
 /********* Modal Edit Lecteur **************/
 
 .modalEditLecteurPopUp .modal-body .form-group{
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
-    margin: 0 10%;
-    width: 100%;
 }
 
 .modalEditLecteurPopUp .form-group label{

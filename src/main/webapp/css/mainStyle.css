@@ -361,7 +361,7 @@ span a.paginate_button{
 
 .panel-body .table tr,
 .panel-body .table td {
-    font-size: 15px;
+    font-size: 12px;
     padding: 8px;
 }
 .panel-body th {
@@ -486,7 +486,10 @@ table tbody{
 
 .button_group{
     margin-top: 20px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
 }
 
 .button_group .btnConfirm,
