@@ -10,10 +10,10 @@
     font-family: "AvantGarde Bk BT";
     src: url("../assets/fonts/AvantGardeDemiBT.ttf");
 }
-/*@font-face {
+@font-face {
     font-family: "FontAwesome";
     src: url("../assets/fonts/fontawesome-webfont.ttf");
-}*/
+}
 
 *{
     margin: 0;
@@ -73,7 +73,6 @@ body{
 
 .tableContainer{
     width: 90%;
-    height: 100%;
     margin: 0 5% 3% 5%;
     border: solid rgba(0, 0, 0, .125);
     border-radius: 5px;

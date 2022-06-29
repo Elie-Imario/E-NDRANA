@@ -75,7 +75,7 @@
     </servlet-mapping>
     <!---->
 
-    <!--MON COMPTE -->
+    <!--PRET -->
     <servlet>
         <servlet-name>PretServlet</servlet-name>
         <servlet-class>com.e_Ndrana.servlet.PretServlet</servlet-class>
@@ -87,7 +87,7 @@
     </servlet-mapping>
     <!---->
 
-    <!--MON COMPTE -->
+    <!-- CHART -->
     <servlet>
         <servlet-name>E_NdranaChartServlet</servlet-name>
         <servlet-class>com.e_Ndrana.servlet.E_NdranaChartServlet</servlet-class>
