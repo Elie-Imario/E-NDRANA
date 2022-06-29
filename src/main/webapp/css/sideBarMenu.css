@@ -14,13 +14,15 @@
 }
 
 .navbar-brand{
-    font-family: "BRUSHIA";
-    font-size: 35px;
     text-align: center;
-    color: #fff;
-    padding: 10px;
     width: 100%;
     height: 80px;
+}
+.navbar-brand span{
+    font-family: "BRUSHIA";
+    font-size: 35px;
+    color: #fff;
+    padding: 10px;
 }
 
 .nav-sidebar{

@@ -29,6 +29,10 @@ body{
 /**************************
 -------- GENERAL ----------
  **************************/
+.form-control{
+    font-size: 0.9rem !important;
+}
+
 
 /***Modal***/
 .modal-shadow {
@@ -357,8 +361,8 @@ span a.paginate_button{
 
 .panel-body .table tr,
 .panel-body .table td {
-    font-size: 12px;
-    padding: 5px 8px;
+    font-size: 15px;
+    padding: 8px;
 }
 .panel-body th {
     background-color: #093F76;
@@ -417,7 +421,7 @@ span a.paginate_button{
 }
 table tbody{
     font-family: "AvantGarde Bk BT";
-    font-size: 15px;
+    font-size: 13px;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -467,14 +471,16 @@ table tbody{
 }
 
 .content-body .form-group{
-    display: inline-block;
+    display: flex;
     width: 100%;
     padding: 5px;
     text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
 }
 .content-body input{
     display: inline-block;
-    max-width: 280px;
     width: 100%;
 }
 
@@ -509,9 +515,8 @@ table tbody{
 
 /**Filtre avancée Pret**/
 .searchPretForm .input_group{
-    display: inline-block;
-    max-width: 400px;
-    vertical-align: middle;
+    display: flex;
+    margin-left: 10px;
 }
 
 .searchPretForm .input_group .datedebutPret_InputField,
@@ -522,13 +527,14 @@ table tbody{
     float: left;
     border-radius: 0!important;
     font-size: 14px;
-    padding: 10px;
+    height: 35px;
 }
 .searchPretForm .input_group .input-group-addon{
     border: 2px solid #ced4da;
     background: #ced4da;
-    padding: 7px;
+    padding: 5px;
     width: 35px;
+    height: 35px;
     float: right;
     cursor: pointer;
 }
@@ -545,17 +551,17 @@ table tbody{
 
 .searchLecteurForm .form-group label{
     width: 100px;
-    font-size: 18px;
+    font-size: 15px;
     font-family: "AvantGarde Bk BT";
 }
 .searchBookForm .form-group label{
-    width: 180px;
-    font-size: 18px;
+    width: 200px;
+    font-size: 15px;
     font-family: "AvantGarde Bk BT";
 }
 .searchPretForm .form-group label{
-    width: 160px;
-    font-size: 18px;
+    width: 100%;
+    font-size: 15px;
     font-family: "AvantGarde Bk BT";
 }
 
