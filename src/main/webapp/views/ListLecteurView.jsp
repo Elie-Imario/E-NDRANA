@@ -58,7 +58,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Mobile : </label>
-                                            <input type="text" class="form-control" id="InputFieldSearchForMobileLecteur" name="mobileLeacteurSearch"
+                                            <input type="tel" class="form-control" id="InputFieldSearchForMobileLecteur" name="mobileLeacteurSearch"
                                                placeholder="Mobile du Lecteur">
                                         </div>
                                     </div>

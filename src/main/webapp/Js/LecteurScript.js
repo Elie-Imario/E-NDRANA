@@ -48,6 +48,34 @@ $(document).ready(function (){
     })
 
 
+    //form filled
+    $("input[type='text']").on("input", function (e) {
+        let validatedValue = ""
+        if(e.target.type === "text"){
+            validatedValue = e.target.value.replace(/[^\D]/, "");
+
+            e.target.value = validatedValue
+        }
+    })
+
+    $("input[type='tel']").on("input", function (e) {
+        let validatedValue = ""
+        if(e.target.type === "tel"){
+            let num = e.target.value.replace(/[^\d]/, "");
+            validatedValue = num;
+
+            if(num.length == 10){
+                const parts = num.match(/^\(?(\d{3})\D*(\d{2})\D*(\d{3})\D*(\d{2})$/);
+                validatedValue = `${parts[1]} ${parts[2]} ${parts[3]} ${parts[4]}`;
+            }
+            else if(num.length > 10){
+                validatedValue = num.replace(/\D/g, "")
+            }
+            e.target.value=validatedValue
+        }
+    })
+
+
 });
 
 

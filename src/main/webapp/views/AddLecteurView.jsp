@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label class="control-label" for="readerEmail_InputField">Email : </label>
                             <div class="input_group">
-                                <input type="text" class="form-control" id="readerEmail_InputField" name="readerEmailToAdd"
+                                <input type="email" class="form-control" id="readerEmail_InputField" name="readerEmailToAdd"
                                        placeholder="Email du Lecteur">
                             </div>
                         </div>
@@ -53,8 +53,8 @@
                         <div class="form-group">
                             <label class="control-label" for="readerMobile_InputField">Mobile : </label>
                             <div class="input_group">
-                                <input type="text" class="form-control" id="readerMobile_InputField" name="readerMobileToAdd"
-                                       placeholder="Mobile du Lecteur">
+                                <input type="tel" class="form-control" id="readerMobile_InputField" name="readerMobileToAdd"
+                                       placeholder="Mobile du Lecteur" maxlength="10">
                             </div>
                         </div>
                     </div>
