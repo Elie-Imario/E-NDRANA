@@ -32,7 +32,7 @@ public class LivreDAO {
 
     public static void ADDBOOK(String title, String nameAuthor, String _dateEdition){
         Connection connection = connectToDatabase.getInstance();
-        String query = "INSERT INTO Livre(Titre_Ouvrage, Nom_Auteur, Designation, Date_Edition) VALUES(?,?,?)";
+        String query = "INSERT INTO Livre(Titre_Ouvrage, Nom_Auteur, Date_Edition) VALUES(?,?,?)";
 
         try {
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
