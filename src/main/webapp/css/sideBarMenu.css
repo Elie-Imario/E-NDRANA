@@ -2,8 +2,7 @@
     font-family: "BRUSHIA";
     src: url("../assets/fonts/BRUSHIA.ttf");
 }
-
-.sidebar-container{
+.sidebar-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -22,11 +21,9 @@
     font-family: "BRUSHIA";
     font-size: 35px;
     color: #fff;
-    padding: 10px;
+    line-height: 5rem;
 }
 
-.nav-sidebar{
-}
 .nav-sidebar .nav-item{
     width: 100%;
     height: 100%;
@@ -43,13 +40,14 @@
 }
 .nav-item a{
     text-decoration: none;
+    color: #ffffff !important;
     display: block;
-    color: #ffffff;
     padding: 20px 0;
     margin-left: 20px;
     height: 100%;
     width: 100%;
 }
+
 .nav-item .nav-item-list{
     list-style: none;
     border: 1px solid;

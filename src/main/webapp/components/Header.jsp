@@ -12,7 +12,6 @@
 
     <!-- Common Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/DataTables/datatables.css">
     <link rel="stylesheet" href="assets/DataTables/datatables.min.css">
     <link rel="stylesheet" href="assets/datePicker/bootstrap-datepicker.css">
     <link rel="stylesheet" href="assets/datePicker/datePickerStyleSheet.css">
