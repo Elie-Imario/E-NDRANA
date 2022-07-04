@@ -40,6 +40,7 @@
     <script src="assets/DataTables/datatables.min.js"></script>
     <script src="assets/datePicker/dateformat.min.js"></script>
     <script src="assets/datePicker/bootstrap-datepicker.js"></script>
+    <script src="assets/chart%20js/chart.min.js"></script>
 
     <!-- -->
 
@@ -48,7 +49,7 @@
     <script src="Js/OuvrageScript.js"></script>
     <script src="Js/PretScript.js"></script>
     <script src="Js/Scripts.js"></script>
-
+    <script src="Js/chartScript.js"></script>
     <!-- -->
 
 </head>
