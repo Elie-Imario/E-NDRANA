@@ -4,10 +4,19 @@ $(document).ready(function(){
 
     $("#datedebutPret_InputField").datepicker({
         dateFormat: "dd/mm/yyyy"
-    })
+    }).on('changeDate', function(selected) {
+        dateDebut = new Date(selected.date.valueOf());
+        dateDebut.setDate(dateDebut.getDate(new Date(selected.date.valueOf())));
+        $('#datefinPret_InputField').datepicker('setStartDate', dateDebut);
+    });
     $("#datefinPret_InputField").datepicker({
         dateFormat: "dd/mm/yyyy"
-    })
+    }).on('changeDate', function(selected) {
+        dateFin = new Date(selected.date.valueOf());
+        dateFin.setDate(dateFin.getDate(new Date(selected.date.valueOf())));
+        $('#datedebutPret_InputField').datepicker('setEndDate', dateFin);
+    });
+
 
     /** DatePicker in Modal Add Pret **/
 
@@ -230,7 +239,6 @@ $(document).ready(function(){
         }
     })
     $("#reinitialiserPretSearch").click(function () {
-        //$(".tablelistPret").DataTable().draw()
         console.log($.fn.dataTable.ext.search.length)
         clearArray($.fn.dataTable.ext.search)
         $(".tablelistPret").DataTable().column(0).search("").column(1).search("").column(2).search("").column(3).search("").column(4).search("").draw()
