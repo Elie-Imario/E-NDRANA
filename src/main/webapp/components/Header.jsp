@@ -50,6 +50,7 @@
     <script src="assets/datePicker/dateformat.min.js"></script>
     <script src="assets/datePicker/bootstrap-datepicker.js"></script>
     <script src="assets/chart%20js/chart.min.js"></script>
+    <script src="assets/chart%20js/jspdf.min.js"></script>
 
     <!-- -->
 

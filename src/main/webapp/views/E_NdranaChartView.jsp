@@ -18,6 +18,13 @@
 
                 </canvas>
             </div>
+            <div class="button_group">
+                <button class="btn-form" id="exportLineChartTopdf" type="button"
+                        title="Exporter">
+                    <i class="fa fa-file-pdf"></i>
+                    Exporter
+                </button>
+            </div>
         </section>
     </div>
 </section>
