@@ -9,10 +9,12 @@
 <html>
 <head>
     <title>E-Ndrana</title>
+    <link rel="shortcut icon" href="assets/img/eBookIco.png" type="image/x-icon">
 
     <!-- Common Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/DataTables/datatables.min.css">
+    <link rel="stylesheet" href="assets/DataTables/dataTables.dateTime.min.css">
     <link rel="stylesheet" href="assets/datePicker/bootstrap-datepicker.css">
     <link rel="stylesheet" href="assets/datePicker/datePickerStyleSheet.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.1.1-web/css/all.min.css">
@@ -38,6 +40,13 @@
     <script src="Js/jquery.autocomplete.min.js"></script>
     <script src="assets/DataTables/datatables.js"></script>
     <script src="assets/DataTables/datatables.min.js"></script>
+    <script src="assets/DataTables/moment.min.js"></script>
+    <script src="assets/DataTables/dataTables.dateTime.min.js"></script>
+    <script src="assets/DataTables/dataTables.buttons.min.js"></script>
+    <script src="assets/DataTables/jszip.min.js"></script>
+    <script src="assets/DataTables/vfs_fonts.js"></script>
+    <script src="assets/DataTables/buttons.html5.min.js"></script>
+    <script src="assets/DataTables/buttons.print.min.js"></script>
     <script src="assets/datePicker/dateformat.min.js"></script>
     <script src="assets/datePicker/bootstrap-datepicker.js"></script>
     <script src="assets/chart%20js/chart.min.js"></script>
@@ -49,7 +58,6 @@
     <script src="Js/OuvrageScript.js"></script>
     <script src="Js/PretScript.js"></script>
     <script src="Js/Scripts.js"></script>
-    <script src="Js/chartScript.js"></script>
     <!-- -->
 
 </head>

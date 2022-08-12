@@ -22,6 +22,7 @@
     </div>
 </section>
 
+<script src="Js/chartScript.js"></script>
 
 </body>
 

@@ -1,7 +1,9 @@
 $(document).ready(function (){
     $(".tablelistLecteur").dataTable({
+        dom: 'Blfrtip',
         "aaSorting": [[0, 'desc']],
         "sPaginationType": "full_numbers",
+
         "oLanguage": {
             "sUrl": "assets/DataTables/dt-config-fr.txt"
         }

@@ -32,7 +32,7 @@
         <div class="block">
             <div class="block-item">
                 <div class="title_block">
-                    <img src="assets/img/cadenas.png" alt="access">
+                    <img src="assets/img/lock.png" alt="access">
                 </div>
                 <div class="block_body">
                     <form action="#" method="POST" class="form-horizontal form-changepswrd">

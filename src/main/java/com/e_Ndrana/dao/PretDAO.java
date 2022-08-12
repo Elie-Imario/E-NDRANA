@@ -687,6 +687,23 @@ public class PretDAO {
         return DateSql;
     }
 
+    public static ArrayList GetDateDebPret(){
+        ArrayList DateDebPret = new ArrayList<>();
+        Connection connection = connectToDatabase.getInstance();
+        String query = "SELECT DateDebPret FROM Pret";
+        try {
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet resultSet = statement.executeQuery(query);
+            while(resultSet.next()){
+                DateDebPret.add(resultSet.getDate("DateDebPret"));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return DateDebPret;
+    }
+
     public static int GetTotalPret(){
 
         String query = "SELECT COUNT(Id_Pret) as TotalPret FROM Pret";

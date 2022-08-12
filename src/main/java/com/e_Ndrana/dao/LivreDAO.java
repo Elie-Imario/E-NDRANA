@@ -143,6 +143,22 @@ public class LivreDAO {
         return NbFoisPretBook;
     }
 
+    public static ArrayList GetBookPrete(){
+        ArrayList titleBooks = new ArrayList<>();
+        Connection connection = connectToDatabase.getInstance();
+        String query = "SELECT Titre_Ouvrage FROM Livre WHERE NbFoisPret > 0 ORDER BY Id_Ouvrage asc";
+        try {
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet resultSet = statement.executeQuery(query);
+            while(resultSet.next()){
+                titleBooks.add(resultSet.getString("Titre_Ouvrage"));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return titleBooks;
+    }
 
     public static int GetTotalLivrePret(){
 

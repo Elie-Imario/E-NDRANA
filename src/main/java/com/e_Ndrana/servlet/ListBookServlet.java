@@ -3,6 +3,7 @@ package com.e_Ndrana.servlet;
 import com.e_Ndrana.beans.Livre;
 import com.e_Ndrana.dao.LecteurDAO;
 import com.e_Ndrana.dao.LivreDAO;
+import com.e_Ndrana.dao.PretDAO;
 import com.google.gson.Gson;
 
 import javax.servlet.*;
@@ -33,6 +34,9 @@ public class ListBookServlet extends HttpServlet {
         }
         else if(request.getParameter("RequestType").equals("DeleteBook")){
             processDeleteBook(request, response);
+        }
+        else if(request.getParameter("RequestType").equals("GetDetailsBookPrete")){
+            processGetDetailsBookPrete(request, response);
         }
     }
 
@@ -81,4 +85,26 @@ public class ListBookServlet extends HttpServlet {
         response.setContentType("application/json");
         response.getWriter().write(JsonResponse);
     }
+
+    protected void processGetDetailsBookPrete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        ArrayList TitleBookPrete = LivreDAO.GetBookPrete();
+        ArrayList BookNbPret = LivreDAO.GetNbPretLivre();
+
+        Map dataResponse = new HashMap();
+
+        dataResponse.put("titleBook", TitleBookPrete);
+        dataResponse.put("nbFoisPret", BookNbPret );
+
+        ArrayList _dataResponse = new ArrayList();
+
+        _dataResponse.add(dataResponse);
+
+        String JsonResponse = new Gson().toJson(_dataResponse);
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(JsonResponse);
+    }
+
+
 }

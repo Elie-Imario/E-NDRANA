@@ -180,42 +180,68 @@ $(document).ready(function(){
     $("#searchPret").click(function(){
         let searchParams = []
         let _datedebParams, _datefinParams, datedebParams, datefinParams
+
+        clearArray($.fn.dataTable.ext.search)
+
         if(($("input[name='datedebutPretSearch']").val() == "") && ($("input[name='datefinPretSearch']").val() == "")){
             datedebParams = ""
             datefinParams = ""
+
+            searchParams.push($("input[name='numeroPretSearch']").val(), $("input[name='nomLecteurSearch']").val(), datedebParams, datefinParams, $("input[name='titreOuvrageSearch']").val())
+            $(".tablelistPret").DataTable().column(0).search(searchParams[0]).column(1).search(searchParams[4]).column(2).search(searchParams[1]).column(3).search(searchParams[2]).column(4).search(searchParams[3]).draw()
         }
         else if(($("input[name='datedebutPretSearch']").val() != "") && ($("input[name='datefinPretSearch']").val() == "")){
             _datedebParams = $("input[name='datedebutPretSearch']").datepicker('getDate')
 
             datedebParams = new Date(_datedebParams).format("yyyy-mm-dd")
             datefinParams = ""
+
+            searchParams.push($("input[name='numeroPretSearch']").val(), $("input[name='nomLecteurSearch']").val(), datedebParams, datefinParams, $("input[name='titreOuvrageSearch']").val())
+            $(".tablelistPret").DataTable().column(0).search(searchParams[0]).column(1).search(searchParams[4]).column(2).search(searchParams[1]).column(3).search(searchParams[2]).column(4).search(searchParams[3]).draw()
         }
 
         else if(($("input[name='datedebutPretSearch']").val() == "") && ($("input[name='datefinPretSearch']").val() != "")){
             _datefinParams = $("input[name='datefinPretSearch']").datepicker('getDate')
-
             datedebParams = ""
             datefinParams = new Date(_datefinParams).format("yyyy-mm-dd")
+
+            searchParams.push($("input[name='numeroPretSearch']").val(), $("input[name='nomLecteurSearch']").val(), datedebParams, datefinParams, $("input[name='titreOuvrageSearch']").val())
+            $(".tablelistPret").DataTable().column(0).search(searchParams[0]).column(1).search(searchParams[4]).column(2).search(searchParams[1]).column(3).search(searchParams[2]).column(4).search(searchParams[3]).draw()
         }
 
         else{
             _datedebParams = $("input[name='datedebutPretSearch']").datepicker('getDate')
             _datefinParams = $("input[name='datefinPretSearch']").datepicker('getDate')
 
-            datedebParams = new Date(_datedebParams).format("yyyy-mm-dd")
-            datefinParams = new Date(_datefinParams).format("yyyy-mm-dd")
-        }
+            $.fn.dataTable.ext.search.push(
+                function( settings, data, dataIndex ) {
+                    var min = _datedebParams;
+                    var max = _datefinParams;
+                    var date = new Date( data[4] );
 
-        searchParams.push($("input[name='numeroPretSearch']").val(), $("input[name='nomLecteurSearch']").val(), datedebParams, datefinParams, $("input[name='titreOuvrageSearch']").val())
-        $(".tablelistPret").DataTable().column(0).search(searchParams[0]).column(1).search(searchParams[4]).column(2).search(searchParams[1]).column(3).search(searchParams[2]).column(4).search(searchParams[3]).draw()
+                    if (( min <= date && date <= max )) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+            searchParams.push($("input[name='numeroPretSearch']").val(), $("input[name='nomLecteurSearch']").val(), $("input[name='titreOuvrageSearch']").val())
+            $(".tablelistPret").DataTable().column(0).search(searchParams[0]).column(1).search(searchParams[2]).column(2).search(searchParams[1]).draw()
+        }
     })
     $("#reinitialiserPretSearch").click(function () {
+        //$(".tablelistPret").DataTable().draw()
+        console.log($.fn.dataTable.ext.search.length)
+        clearArray($.fn.dataTable.ext.search)
         $(".tablelistPret").DataTable().column(0).search("").column(1).search("").column(2).search("").column(3).search("").column(4).search("").draw()
-
     })
-
 })
 
+function clearArray(array) {
+    while (array.length > 0) {
+        array.pop();
+    }
+}
 
 function initUpdatePret(idPret){
     $.ajax({
@@ -262,8 +288,8 @@ function differenceBetweenDate(dateDeb, DateEnd){
 }
 
 
-function getReaderName(){
-    var readerNameresult = [];
+function getReaderName(input){
+    let readerNameresult = []
     $.ajax({
         type: "POST",
         data: {
@@ -284,7 +310,7 @@ function getReaderName(){
 }
 
 function getTitleBook(){
-    var resultTitleBook = [];
+    let resultTitleBook = []
     $.ajax({
         type: "POST",
         data: {
@@ -472,7 +498,6 @@ function closePretAddModal(){
 }
 
 
-
 function showPretEditModal(){
     if ($(".modalPopUp.modalEditPretPopUp").hasClass("fade")) {
         $(".modalPopUp.modalEditPretPopUp").removeClass("fade")
@@ -486,8 +511,11 @@ function showPretEditModal(){
 }
 
 
+
 function closePretEditModal(){
     $(".modalPopUp.modalEditPretPopUp").addClass("fade")
     $(".modal-shadow").removeClass("open")
     $("body").removeClass("modal-open")
 }
+
+

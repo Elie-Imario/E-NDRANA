@@ -1,13 +1,14 @@
 <component name="ArtifactManager">
   <artifact type="war" name="e-Ndrana:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="e-Ndrana_war.war">
+    <properties id="maven-jee-properties">
+      <options>
+        <module>e-Ndrana</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="e-Ndrana-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="e-Ndrana:war exploded" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="lib" />
-        </element>
-      </element>
     </root>
   </artifact>
 </component>

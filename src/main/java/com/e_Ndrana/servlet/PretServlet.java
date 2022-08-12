@@ -45,6 +45,9 @@ public class PretServlet extends HttpServlet {
         else if(request.getParameter("RequestType").equals("GetTitleBook")){
             processGetTitleBook(request, response);
         }
+        else if(request.getParameter("RequestType").equals("GetDateDebPret")){
+            processGetDateDebPret(request, response);
+        }
     }
 
 
@@ -128,5 +131,15 @@ public class PretServlet extends HttpServlet {
         response.setContentType("application/json");
         response.getWriter().write(JsonResponse);
 
+    }
+
+    protected void processGetDateDebPret(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        ArrayList Datedeb = PretDAO.GetDateDebPret();
+
+        String JsonResponse = new Gson().toJson(Datedeb);
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(JsonResponse);
     }
 }
