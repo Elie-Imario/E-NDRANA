@@ -1,6 +1,5 @@
 $(document).ready(function (){
     $(".tablelistLecteur").dataTable({
-        dom: 'Blfrtip',
         "aaSorting": [[0, 'desc']],
         "sPaginationType": "full_numbers",
 
@@ -42,7 +41,6 @@ $(document).ready(function (){
     $("#searchLecteur").click(function(){
         let searchParams = []
         searchParams.push($("input[name='nomLecteurSearch']").val(), $("input[name='fonctionLeacteurSearch']").val(), $("input[name='mobileLeacteurSearch']").val())
-        console.log(searchParams)
         $(".tablelistLecteur").DataTable().column(1).search(searchParams[0]).column(2).search(searchParams[1]).column(3).search(searchParams[2]).draw()
     })
     $("#reinitialiserLecteurSearch").click(function () {
@@ -51,7 +49,7 @@ $(document).ready(function (){
 
 
     //form filled
-    $("input[type='text']").on("input", function (e) {
+    $(".text").on("input", function (e) {
         let validatedValue = ""
         if(e.target.type === "text"){
             validatedValue = e.target.value.replace(/[^\D]/, "");

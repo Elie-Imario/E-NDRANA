@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Lecteur : </label>
-                                        <input type="text" class="form-control" name="nomLecteurSearch"
+                                        <input type="text" class="form-control text" name="nomLecteurSearch"
                                                placeholder="Lecteur">
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                     <div class="col-sm-12 form-container">
                                         <div class="form-group">
                                             <label class="control-label">Nom du Lecteur : </label>
-                                            <input type="text" class="form-control readerNameToAdd_InputField" id="readerNameToAdd_InputField" name="readerNametoAdd"
+                                            <input type="text" class="form-control text readerNameToAdd_InputField" id="readerNameToAdd_InputField" name="readerNametoAdd"
                                                    placeholder="Nom du Lecteur">
                                         </div>
 
@@ -198,18 +198,18 @@
                                                    placeholder="Titre de l'Ouvrage">
                                         </div>
                                         <div class="form-group">
-                                            <div class="date-form-group">
-                                                <label class="control-label">Date Debut : </label>
-                                                <div class="input_group">
-                                                    <input type="text" class="form-control datedebutPretToAdd_InputField" id="datedebutPretToAdd_InputField" name="datedebutPrettoAdd" placeholder="Début Prêt">
+                                            <div class="input_group">
+                                                <label class="control-label">Début Pret: </label>
+                                                <div class="">
+                                                    <input type="text" class="form-control datedebutPretToAdd_InputField" id="datedebutPretToAdd_InputField" name="datedebutPrettoAdd" placeholder="Date début">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="date-form-group">
-                                                <label class="control-label">Date Fin : </label>
-                                                <div class="input_group">
-                                                    <input type="text" class="form-control datefinPretToAdd_InputField" id="datefinPretToAdd_InputField" name="datefinPrettoAdd" placeholder="Fin Prêt">
-                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                            <div class="input_group">
+                                                <label class="control-label">Fin Prêt: </label>
+                                                <div class="">
+                                                <input type="text" class="form-control datefinPretToAdd_InputField" id="datefinPretToAdd_InputField" name="datefinPrettoAdd" placeholder="Date fin">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -286,21 +286,22 @@
                                                    placeholder="Titre de l'Ouvrage">
                                         </div>
                                         <div class="form-group">
-                                            <div class="date-form-group">
-                                                <label class="control-label">Date Debut : </label>
-                                                <div class="input_group">
-                                                    <input type="text" class="form-control datedebutPretToEdit_InputField" id="datedebutPretToEdit_InputField" name="datedebutPret" placeholder="Début Prêt">
+                                            <div class="input_group">
+                                                <label class="control-label">Début Pret:</label>
+                                                <div class="">
+                                                    <input type="text" class="form-control datedebutPretToEdit_InputField" id="datedebutPretToEdit_InputField" name="datedebutPret" placeholder="Date début">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="date-form-group">
-                                                <label class="control-label">Date Fin : </label>
-                                                <div class="input_group">
-                                                    <input type="text" class="form-control datefinPretToEdit_InputField" id="datefinPretToEdit_InputField" name="datefinPret" placeholder="Fin Prêt">
+                                            <div class="input_group">
+                                                <label class="control-label">Fin Prêt:</label>
+                                                <div class="">
+                                                    <input type="text" class="form-control datefinPretToEdit_InputField" id="datefinPretToEdit_InputField" name="datefinPret" placeholder="Date fin">
                                                     <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
                                         </div>
+
 
                                         <div class="form-group">
                                             <label class="control-label" for="nbJourPretToEdit_InputField">Nombre de jour : </label>

@@ -243,6 +243,15 @@ $(document).ready(function(){
         clearArray($.fn.dataTable.ext.search)
         $(".tablelistPret").DataTable().column(0).search("").column(1).search("").column(2).search("").column(3).search("").column(4).search("").draw()
     })
+
+    $(".text").on("input", function (e) {
+        let validatedValue = ""
+        if(e.target.type === "text"){
+            validatedValue = e.target.value.replace(/[^\D]/, "");
+
+            e.target.value = validatedValue
+        }
+    })
 })
 
 function clearArray(array) {

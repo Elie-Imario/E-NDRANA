@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label class="control-label" for="readerName_InputField">Nom : </label>
                             <div class="input_group">
-                                <input type="text" class="form-control" id="readerName_InputField" name="readerNameToAdd"
+                                <input type="text" class="form-control text" id="readerName_InputField" name="readerNameToAdd"
                                        placeholder="Nom du Lecteur">
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label class="control-label" for="readerFonction_InputField">Fonction : </label>
                             <div class="input_group">
-                                <input type="text" class="form-control" id="readerFonction_InputField" name="readerFonctionToAdd"
+                                <input type="text" class="form-control text" id="readerFonction_InputField" name="readerFonctionToAdd"
                                        placeholder="Fonction du Lecteur">
                             </div>
                         </div>

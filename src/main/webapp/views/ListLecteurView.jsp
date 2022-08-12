@@ -46,12 +46,12 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Nom : </label>
-                                            <input type="text" class="form-control" id="InputFieldSearchForNomLecteur" name="nomLecteurSearch"
+                                            <input type="text" class="form-control text" id="InputFieldSearchForNomLecteur" name="nomLecteurSearch"
                                                placeholder="Nom du Lecteur">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Fonction : </label>
-                                            <input type="text" class="form-control" id="InputFieldSearchForFonctionLecteur" name="fonctionLeacteurSearch"
+                                            <input type="text" class="form-control text" id="InputFieldSearchForFonctionLecteur" name="fonctionLeacteurSearch"
                                                placeholder="Fonction du Lecteur">
                                         </div>
                                     </div>
@@ -189,7 +189,7 @@
                                             <div class="form-group">
                                                 <label class="control-label" for="readerName_InputField">Nom : </label>
                                                 <div class="input_group">
-                                                    <input type="text" class="form-control" id="readerName_InputField" name="readerName"
+                                                    <input type="text" class="form-control text" id="readerName_InputField" name="readerName"
                                                            placeholder="Nom du Lecteur">
                                                 </div>
                                             </div>
@@ -203,7 +203,7 @@
                                             <div class="form-group">
                                                 <label class="control-label" for="readerFonction_InputField">Fonction : </label>
                                                 <div class="input_group">
-                                                    <input type="text" class="form-control" id="readerFonction_InputField" name="readerFonction"
+                                                    <input type="text" class="form-control text" id="readerFonction_InputField" name="readerFonction"
                                                            placeholder="Fonction du Lecteur">
                                                 </div>
                                             </div>

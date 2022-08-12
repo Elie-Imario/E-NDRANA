@@ -74,11 +74,12 @@
 }
 
 .warning-Alert{
-    width: 100%;
+    width: 80%;
     height: 100%;
     padding: 10px;
     text-align: center;
     display: none;
+    margin: 0 auto;
 }
 .warning-Alert .fa-warning{
     font-size: 21px;
@@ -106,60 +107,65 @@
 .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
 
 
-/********* Modal Add Pret **************/
-.modalAddPretPopUp .modal-dialog{
-    max-width: 600px!important;
-}
-.modalAddPretPopUp .modal-body .form-group{
-    display: inline-block;
-    padding: 10px;
+/********* Modal **************/
+.modalPopUp .modal-dialog{
     width: 100%;
 }
-
-.modalAddPretPopUp .form-group label{
-    font-size: 17px;
-    font-family: "AvantGarde Bk BT";
-    width: 30%;
-}
-.modalAddPretPopUp .form-group .date-form-group{
-    display: inline-block;
-}
-.modalAddPretPopUp .form-group .date-form-group label{
-    font-size: 17px;
-    font-family: "AvantGarde Bk BT";
-    width: 105px;
-    text-align: right;
+.modalPopUp .modal-body .form-group{
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    flex-direction: row;
+    align-items: center;
 }
 
-.modalAddPretPopUp .form-group input{
-    width: 60%;
+.modalPopUp .form-group label{
+    font-size: 15px;
+    font-family: "AvantGarde Bk BT";
+    width: 150px;
+    padding: 5px;
+}
+.modalPopUp .form-group .date-form-group{
     display: inline-block;
 }
-.modalAddPretPopUp .form-horizontal .form-container{
+.modalPopUp .form-group input,
+.form-select{
+    width: 250px;
+    display: inline-block;
+}
+.modalPopUp .form-horizontal .form-container{
     width: 96%;
     margin: 0 2%;
 }
 
 
-.modalAddPretPopUp .input_group{
-    display: inline-block;
-    max-width: 400px;
+.modalPopUp .input_group{
+    display: flex;
     vertical-align: middle;
 }
+.input_group .control-label{
+    text-align: end;
+}
+.input_group div{
+    display: flex;
+    width: 100%;
+}
 
-.modalAddPretPopUp .input_group .datedebutPretToAdd_InputField,
-.modalAddPretPopUp .input_group .datefinPretToAdd_InputField{
-    width: 105px;
+
+.modalAddPretPopUp .datedebutPretToAdd_InputField,.modalAddPretPopUp .datefinPretToAdd_InputField,
+.modalEditPretPopUp .datedebutPretToEdit_InputField, .modalEditPretPopUp .datefinPretToEdit_InputField{
+    width: 80%!important;
     position: relative;
     float: left;
     border-radius: 0!important;
-    font-size: 15px;
+    font-size: 12px!important;
 }
-.modalAddPretPopUp .input_group .input-group-addon{
+.modalPopUp .input_group .input-group-addon{
     border: 2px solid #ced4da;
     background: #ced4da;
-    padding: 5px;
+    padding: 7px;
     width: 30px;
+    height: 35px;
     float: right;
     cursor: pointer;
 }
@@ -168,97 +174,16 @@
     color: #4f5050;
 }
 
-.modalAddPretPopUp .form-horizontal .button_group .btnConfirm,
-.modalAddPretPopUp .form-horizontal .button_group .btnCancel{
+.modalPopUp .form-horizontal .button_group .btnConfirm,
+.modalPopUp .form-horizontal .button_group .btnCancel{
     width: 150px!important;
     font-size: 15px;
 }
 
-.modalAddPretPopUp .form-horizontal .button_group .btnConfirm{
+.modalPopUp .form-horizontal .button_group .btnConfirm{
     background: #28a745!important;
 }
-.modalAddPretPopUp .form-horizontal .button_group .btnCancel{
+.modalPopUp .form-horizontal .button_group .btnCancel{
     background: #dc3545!important;
 }
 
-
-/********* Modal Edit Pret **************/
-.modalEditPretPopUp .modal-dialog{
-    max-width: 600px!important;
-}
-.modalEditPretPopUp .modal-body .form-group{
-    display: inline-block;
-    padding: 10px;
-    width: 100%;
-}
-.modalEditPretPopUp .form-group .form-select{
-    display: inline-block;
-    width: 60%;
-    background-color: #f5f5f5;
-}
-
-.modalEditPretPopUp .form-group label{
-    font-size: 17px;
-    font-family: "AvantGarde Bk BT";
-    width: 30%;
-}
-
-.modalEditPretPopUp .form-group .date-form-group{
-    display: inline-block;
-}
-.modalEditPretPopUp .form-group .date-form-group label{
-    font-size: 17px;
-    font-family: "AvantGarde Bk BT";
-    width: 105px;
-    text-align: right;
-}
-
-.modalEditPretPopUp .form-group input{
-    width: 60%;
-    display: inline-block;
-}
-.modalEditPretPopUp .form-horizontal .form-container{
-    width: 96%;
-    margin: 0 2%;
-}
-
-
-.modalEditPretPopUp .input_group{
-    display: inline-block;
-    max-width: 400px;
-    vertical-align: middle;
-}
-
-.modalEditPretPopUp .input_group .datedebutPretToEdit_InputField,
-.modalEditPretPopUp .input_group .datefinPretToEdit_InputField{
-    width: 105px;
-    position: relative;
-    float: left;
-    border-radius: 0!important;
-    font-size: 15px;
-}
-.modalEditPretPopUp .input_group .input-group-addon{
-    border: 2px solid #ced4da;
-    background: #ced4da;
-    padding: 5px;
-    width: 30px;
-    float: right;
-    cursor: pointer;
-}
-
-.input-group-addon .fa-calendar{
-    color: #4f5050;
-}
-
-.modalEditPretPopUp .form-horizontal .button_group .btnConfirm,
-.modalEditPretPopUp .form-horizontal .button_group .btnCancel{
-    width: 150px!important;
-    font-size: 15px;
-}
-
-.modalEditPretPopUp .form-horizontal .button_group .btnConfirm{
-    background: #28a745!important;
-}
-.modalEditPretPopUp .form-horizontal .button_group .btnCancel{
-    background: #dc3545!important;
-}
