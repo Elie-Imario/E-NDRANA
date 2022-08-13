@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>E-Ndrana</title>
-    <link rel="shortcut icon" href="assets/img/eBookIco.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/img/eBook_Ico.png" type="image/x-icon">
 
     <!-- Common Styles -->
     <link rel="stylesheet" href="css/bootstrap.min.css">

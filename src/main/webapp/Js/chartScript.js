@@ -76,12 +76,10 @@ $(document).ready(function () {
 
 
     $("#exportLineChartTopdf").on('click',function(){
-        console.log("Hello world")
-        /*var logo_url = "assets/img/eBookIco.png";
+        const logo_url = "./assets/img/eBook_Ico.png";
         getImgFromUrl(logo_url, function (img) {
             generatePDF(img);
-        });*/
-        generatePDF()
+        });
     })
 
 
@@ -89,27 +87,27 @@ $(document).ready(function () {
 
 
 function getImgFromUrl(logo_url, callback) {
-    var img = new Image();
+    const img = new Image();
     img.src = logo_url;
     img.onload = function () {
         callback(img);
     };
 }
 
-function generatePDF(){
-    var newCanvas = $('#myChart')
-    var newCanvasImg = newCanvas[0].toDataURL("image/png", 1.0);
-    var specialElementHandlers = {
+function generatePDF(img){
+    let newCanvas = $('#myChart')
+    let newCanvasImg = newCanvas[0].toDataURL("image/png", 1.0);
+    let specialElementHandlers = {
         '#editor': function (element,renderer) {
             return true;
         }
     };
-    var doc = new jsPDF();
+    let doc = new jsPDF();
 
-    //doc.addImage(img, 'JPEG', 5, 4, 20, 23);
+    doc.addImage(img, 'JPEG', 5, 4, 20, 23);
     doc.setFontSize(12);
     doc.setTextColor("#4C5766");
     doc.text(50, 15, "Histogramme récapitulatif Prets par livres");
     doc.addImage(newCanvasImg, 'JPEG', 15, 35, 180, 95);
-    doc.save('Récapitulatif_des_prets.pdf');
+    doc.save('Récapitulatif_des_prets'+new Date().format("yyyymmddhms")+'.pdf');
 }
