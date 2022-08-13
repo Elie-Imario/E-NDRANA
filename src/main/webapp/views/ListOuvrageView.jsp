@@ -79,13 +79,6 @@
 
         <!-- TABLE LIST OUVRAGE -->
         <div class="tableContainer">
-            <div class="button_group">
-                <button class="btn-form" id="exportListBookTopdf" type="button"
-                        title="Exporter">
-                    <i class="fa fa-file-pdf"></i>
-                    Exporter
-                </button>
-            </div>
             <div class="panel-body">
                 <div class="table-responsive">
                     <div id="divTabListOuvrage" class="table-listOuvrage">

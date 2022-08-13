@@ -128,7 +128,26 @@ $(document).ready(function(){
         "sPaginationType": "full_numbers",
         "oLanguage": {
             "sUrl": "assets/DataTables/dt-config-fr.txt"
-        }
+        },
+        dom: 'Blfrtip',
+        buttons:[
+            {
+                extend: 'pdfHtml5',
+                text: '<i class="fa fa-file-pdf"></i> Exporter',
+                title: 'Liste des Prêts',
+                filename: 'liste_prêts_' + new Date().format("yyyymmddhms"),
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                },
+                customize: function (doc) {
+                    doc.styles.tableHeader.fillColor = '#093F76';
+                    doc.styles.tableHeader.color = '#fff';
+
+                    doc.styles.tableBodyEven.alignment = 'center';
+                    doc.styles.tableBodyOdd.alignment = 'center';
+                }
+            }
+        ]
     })
 
 

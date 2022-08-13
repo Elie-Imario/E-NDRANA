@@ -95,15 +95,10 @@
 
         <!-- TABLE LIST Pret -->
         <div class="tableContainer">
-            <div class="button_group">
+            <div class="btn_group">
                 <button class="btn-form addPretbtn" id="addPretbtn" type="button">
                     <i class="fa fa-plus"></i>
                     Effectuer un prêt
-                </button>
-                <button class="btn-form" id="exportListPretTopdf" type="button"
-                        title="Exporter">
-                    <i class="fa fa-file-pdf"></i>
-                    Exporter
                 </button>
             </div>
             <div class="panel-body">

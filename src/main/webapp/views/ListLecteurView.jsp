@@ -84,13 +84,6 @@
 
             <!-- TABLE LIST LECTEUR -->
             <div class="tableContainer">
-                <div class="button_group">
-                    <button class="btn-form" id="exportListLecteurTopdf" type="button"
-                            title="Exporter">
-                        <i class="fa fa-file-pdf"></i>
-                        Exporter
-                    </button>
-                </div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <div id="divTabListLecteur" class="table-listLecteur">

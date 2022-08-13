@@ -44,6 +44,7 @@
     <script src="assets/DataTables/dataTables.dateTime.min.js"></script>
     <script src="assets/DataTables/dataTables.buttons.min.js"></script>
     <script src="assets/DataTables/jszip.min.js"></script>
+    <script src="assets/DataTables/pdfmake.min.js"></script>
     <script src="assets/DataTables/vfs_fonts.js"></script>
     <script src="assets/DataTables/buttons.html5.min.js"></script>
     <script src="assets/DataTables/buttons.print.min.js"></script>

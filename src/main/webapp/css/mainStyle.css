@@ -81,6 +81,7 @@ body{
     border: solid rgba(0, 0, 0, .125);
     border-radius: 5px;
     overflow: hidden;
+    position: relative;
     background: #fff;
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
 }
@@ -390,14 +391,20 @@ span a.paginate_button{
     font-size: 15px;
 }
 
-
-.tableContainer .button_group{
-    display: block;
-    text-align: right;
-
+.tableContainer .btn_group{
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
-.tableContainer .button_group .btn-form{
+.dt-buttons{
+    display: block;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.tableContainer .btn_group .btn-form,
+.buttons-html5{
     background: #c80f2d;
     color: #ffffff;
     width: 120px;
@@ -409,7 +416,7 @@ span a.paginate_button{
     border: none;
 }
 
-.tableContainer .button_group .btn-form.addPretbtn{
+.tableContainer .btn_group .btn-form.addPretbtn{
     width: 180px;
 }
 
