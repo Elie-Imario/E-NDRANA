@@ -56,7 +56,7 @@
 
 
                         <div class="button_group">
-                            <button onclick="updatePassword()" type="button" class="btn-form btnConfirm" id="updatePassword">
+                            <button type="button" class="btn-form btnConfirm" id="updatePassword">
                                 <i class="fa fa-save"></i>
                                 Confirmer
                             </button>
