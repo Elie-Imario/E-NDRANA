@@ -17,7 +17,8 @@ import java.util.Map;
 public class AddLecteurServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setAttribute("menu_Lecteur_active", true);
+        request.setAttribute("menu_addLecteur_active", true);
         this.getServletContext().getRequestDispatcher("/views/AddLecteurView.jsp").forward(request, response);
     }
 

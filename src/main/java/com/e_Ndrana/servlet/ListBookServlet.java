@@ -20,6 +20,8 @@ public class ListBookServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Livre> Books = LivreDAO.GetAllBook();
         request.setAttribute("Books", Books);
+        request.setAttribute("menu_Ouvrage_active", true);
+        request.setAttribute("menu_listBook_active", true);
 
         this.getServletContext().getRequestDispatcher("/views/ListOuvrageView.jsp").forward(request, response);
     }

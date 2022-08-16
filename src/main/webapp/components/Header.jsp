@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/modalLecteur.css">
     <link rel="stylesheet" href="css/modalOuvrage.css">
     <link rel="stylesheet" href="css/modalPret.css">
-    <link rel="stylesheet" href="css/sideBarMenu.css">
+    <link rel="stylesheet" href="css/Sidebarstyle.css">
     <link rel="stylesheet" href="css/topMenu.css">
 
     <!-- -->
@@ -53,6 +53,13 @@
     <script src="assets/chart%20js/chart.min.js"></script>
     <script src="assets/chart%20js/jspdf.min.js"></script>
 
+    <script >
+            let statusConnection = sessionStorage.getItem("userConnected")
+            if(!statusConnection){
+                $(location).attr('href', "login")
+            }
+     </script>
+
     <!-- -->
 
     <!-- Components scripts -->
@@ -60,6 +67,7 @@
     <script src="Js/OuvrageScript.js"></script>
     <script src="Js/PretScript.js"></script>
     <script src="Js/Scripts.js"></script>
+    <script src="Js/Accordionscript.js"></script>
     <!-- -->
 
 </head>

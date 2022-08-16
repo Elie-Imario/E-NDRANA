@@ -6,7 +6,7 @@
     </section>
 
     <section class="sideBar-nav">
-        <%@include file="../components/SideBarMenu.jsp"%>
+        <%@include file="../components/Sidebar.jsp"%>
     </section>
 
     <section class="main-container">
@@ -19,8 +19,7 @@
                     <div class="ico-alert"><span><i class="fa fa-bell"></i></span></div>
                     <div class="alert-success-content">
                         <span class="close-btn closeAlertSuccess"><i class="fa fa-times-circle"></i></span>
-                        <span class="alertmsg">
-                    </span>
+                        <span class="alertmsg"></span>
                     </div>
                 </div>
             </div>
@@ -33,7 +32,7 @@
                             <label class="control-label" for="readerName_InputField">Nom : </label>
                             <div class="input_group">
                                 <input type="text" class="form-control text" id="readerName_InputField" name="readerNameToAdd"
-                                       placeholder="Nom du Lecteur">
+                                       placeholder="Nom du Lecteur" required minlength="5">
                             </div>
                         </div>
                         <div class="form-group">
@@ -47,7 +46,7 @@
                             <label class="control-label" for="readerFonction_InputField">Fonction : </label>
                             <div class="input_group">
                                 <input type="text" class="form-control text" id="readerFonction_InputField" name="readerFonctionToAdd"
-                                       placeholder="Fonction du Lecteur">
+                                       placeholder="Fonction du Lecteur" required minlength="5">
                             </div>
                         </div>
                         <div class="form-group">
@@ -69,7 +68,12 @@
                         </button>
                     </div>
                 </form>
+                <div class="alert-wrapper">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <span class="error-msg"></span>
+                </div>
             </div>
+
         </div>
     </section>
 </body>

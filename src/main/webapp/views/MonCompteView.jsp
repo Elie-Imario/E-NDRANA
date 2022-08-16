@@ -6,7 +6,7 @@
 </section>
 
 <section class="sideBar-nav">
-    <%@include file="../components/SideBarMenu.jsp"%>
+    <%@include file="../components/Sidebar.jsp"%>
 </section>
 <div class="header"></div>
 <section class="main-container">

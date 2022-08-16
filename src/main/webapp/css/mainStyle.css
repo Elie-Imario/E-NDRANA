@@ -181,6 +181,18 @@ span.close-btn:hover i {
 }
 
 
+.alert-wrapper{
+    color: rgb(235, 28, 28);
+    width: 100%;
+    text-align: center;
+    display: none;
+    margin-bottom: 25px;
+}
+
+.error-msg{
+    font-family: "Poppins-Regular";
+    font-size: 15px;
+}
 
 /****************
 * Datatable
@@ -395,6 +407,7 @@ span a.paginate_button{
     position: absolute;
     top: 20px;
     left: 20px;
+    z-index: 555555;
 }
 
 .dt-buttons{
@@ -664,4 +677,31 @@ table tbody{
     margin-right: 15px;
     font-size: 14px;
     border: none;
+}
+
+.incorrect{
+    transform: scale(1);
+    color: red;
+    border: 2px solid rgba(255, 0, 0, 0.685);
+    box-shadow: 0rem 0.1rem 0.2rem 0.1rem rgba(255, 0, 0, 0.685);
+}
+
+
+@keyframes bounce-in {
+    0%{
+        transform: scale(1);
+    }
+    25%{
+
+        transform: scale(1.1);
+    }
+    50%{
+        transform: scale(1);
+    }
+    75%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
 }

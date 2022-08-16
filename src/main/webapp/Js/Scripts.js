@@ -5,6 +5,12 @@ $(document).ready(function(){
         let confirmPswrd = $("input[name='confirmPassword']").val()
         UpdatePassword(currentPswrd, newPswrd)
     })
+
+    $('.deconnect-link').on('click', function () {
+        sessionStorage.clear()
+        $(location).attr('href', "login")
+    })
+
 })
 
 function UpdatePassword(_currentPassword, _newPswrd) {

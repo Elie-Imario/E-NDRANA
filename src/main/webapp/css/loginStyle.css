@@ -84,7 +84,7 @@ header span{
 }
 
 .btnConfirm{
-    width: 190px;
+    width: 240px;
     padding: .6rem .4rem;
     background-color: rgb(12, 91, 160);
     border: rgb(12, 91, 160);
@@ -92,6 +92,7 @@ header span{
     cursor: pointer;
     color: #fff;
     font-size: 15px;
+    margin-left: 15px;
 }
 
 .btnConfirm:hover{
@@ -110,6 +111,7 @@ header span{
     color: rgb(235, 28, 28);
     width: 100%;
     text-align: center;
+    display: none;
 }
 
 .alert-msg{

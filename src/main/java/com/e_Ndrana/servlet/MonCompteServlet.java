@@ -16,7 +16,7 @@ import java.util.Map;
 public class MonCompteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setAttribute("menu_monCompte_active", true);
         this.getServletContext().getRequestDispatcher("/views/MonCompteView.jsp").forward(request, response);
     }
 

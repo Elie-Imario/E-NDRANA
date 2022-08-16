@@ -18,6 +18,8 @@ public class ListLecteurServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Lecteur> allLecteur = LecteurDAO.getAllLecteur();
         request.setAttribute("Lecteurs", allLecteur);
+        request.setAttribute("menu_Lecteur_active", true);
+        request.setAttribute("menu_listLecteur_active", true);
 
         this.getServletContext().getRequestDispatcher("/views/ListLecteurView.jsp").forward(request, response);
     }

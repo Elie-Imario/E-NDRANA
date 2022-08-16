@@ -22,7 +22,8 @@ import java.util.Map;
 public class AddBookServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setAttribute("menu_Ouvrage_active", true);
+        request.setAttribute("menu_addBook_active", true);
         this.getServletContext().getRequestDispatcher("/views/AddOuvrageView.jsp").forward(request, response);
     }
 

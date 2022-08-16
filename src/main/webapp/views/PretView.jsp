@@ -7,7 +7,7 @@
 </section>
 
 <section class="sideBar-nav">
-    <%@include file="../components/SideBarMenu.jsp"%>
+    <%@include file="../components/Sidebar.jsp"%>
 </section>
 
 <section class="main-container">

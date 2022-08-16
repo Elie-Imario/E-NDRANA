@@ -9,7 +9,7 @@ import java.io.IOException;
 public class E_NdranaChartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setAttribute("menu_stat_active", true);
         this.getServletContext().getRequestDispatcher("/views/E_NdranaChartView.jsp").forward(request, response);
     }
 

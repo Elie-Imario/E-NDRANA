@@ -46,7 +46,19 @@ $(document).ready(function (){
 
     //ADD LECTEUR
     $("#addLecteur").click(function () {
-        addLecteur()
+        let readerName = $("input[name='readerNameToAdd']")
+        let emailReader = $("input[name='readerEmailToAdd']")
+        let fonctionReader = $("input[name='readerFonctionToAdd']")
+        let mobileReader = $("input[name='readerMobileToAdd']")
+
+        console.log(mobileReader.length)
+        if(isValidForm(readerName, emailReader, fonctionReader, mobileReader)){
+            addLecteur(readerName, emailReader, fonctionReader, mobileReader)
+            console.log("no error")
+        }
+        else{
+            console.log("error")
+        }
     })
 
     //UPDATE LECTEUR
@@ -101,18 +113,14 @@ $(document).ready(function (){
 
 
 
-function addLecteur(){
-    let readerName = $("input[name='readerNameToAdd']").val()
-    let emailReader = $("input[name='readerEmailToAdd']").val()
-    let fonctionReader = $("input[name='readerFonctionToAdd']").val()
-    let mobileReader = $("input[name='readerMobileToAdd']").val()
+function addLecteur(_readerName, _emailReader, _fonctionReader, _mobileReader){
     $.ajax({
         type: "POST",
         data:{
-            nomLecteur: readerName,
-            emailLecteur: emailReader,
-            fonctionLecteur : fonctionReader,
-            mobileLecteur : mobileReader,
+            nomLecteur: _readerName.val(),
+            emailLecteur: _emailReader.val(),
+            fonctionLecteur : _fonctionReader.val(),
+            mobileLecteur : _mobileReader.val(),
             RequestType: "AddLecteur"
         },
         url: "add_Lecteur",
@@ -308,4 +316,63 @@ function showAlert(alertMsg){
 function closeAlertSuccess(){
     $(".alert-success").removeClass("displayed")
     $(".alert-success").addClass("disappered")
+}
+
+
+function isValidForm(readerName, emailReader, fonctionReader, mobileReader){
+    if( readerName.val() == "" && fonctionReader.val() == "" && mobileReader.val() == ""){
+        $(".error-msg").text("Ces champs sont obligatoires!")
+        return false;
+    }
+    else if(readerName.val() == ""){
+        $(".error-msg").text("Veuillez renseigner le nom du Lecteur!")
+        return false
+    }
+    else if(fonctionReader.val() == ""){
+        $(".error-msg").text("Veuillez renseigner la fonction exercée par le Lecteur!")
+        return false
+    }
+    else if(mobileReader.val() == ""){
+        $(".error-msg").text("Veuillez renseigner le mobile du Lecteur!")
+        return false
+    }
+    else if( readerName.val() != "" && fonctionReader.val() != "" && mobileReader.val() != ""){
+        if(emailReader.val() != ""){
+            if(!isValidEMail(emailReader.val())){
+                $(".error-msg").text("Veuillez renseigner une adresse éléctronique valide!")
+                return false
+            }
+        }
+        else if(mobileReader.val().length < 10){
+            $(".error-msg").text("Le numero du Lecteur doit être de 10 caractères!!")
+            return false
+        }
+        else if(mobileReader.val().length > 10){
+            if(!isMobileValid(mobileReader.val())){
+                $(".error-msg").text("Le numero est incorrect!!")
+                return false
+            }
+        }
+        return true
+    }
+
+
+}
+
+
+function isValidEMail(email){
+    const emailRegEx = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/
+
+    if(emailRegEx.test(email)){
+        return true;
+    }
+    return false
+}
+
+function isMobileValid(usermobile){
+    const phoneRegEx = /^(03[2-4]) (\d{2}) (\d{3}) (\d{2})$/
+    if(phoneRegEx.test(usermobile)){
+        return true
+    }
+    return false
 }

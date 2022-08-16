@@ -28,18 +28,18 @@
                     <div class="form-group">
                         <div class="input_group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input type="text" class="form-control" id="login_InputField" name="login" placeholder="Utilisateur">
+                            <input type="text" class="form-control" id="login_InputField" name="login" placeholder="Utilisateur" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input_group">
                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                            <input type="password" class="form-control" id="password_InputField" name="password" placeholder="Mot de passe">
+                            <input type="password" class="form-control" id="password_InputField" name="password" placeholder="Mot de passe" required>
                         </div>
                     </div>
                 </div>
                 <div class="button_group">
-                    <button type="button" class="btn-form btnConfirm" id="addBook">
+                    <button type="button" class="btn-form btnConfirm" id="Sign-In">
                         <i class="fa fa-sign-in"></i>
                         Se connecter
                     </button>
@@ -53,5 +53,6 @@
     </div>
 
     <script src="Js/jquery-2.2.4.js"></script>
+    <script src="Js/LoginScript.js"></script>
 </body>
 </html>

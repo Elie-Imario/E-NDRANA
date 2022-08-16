@@ -18,6 +18,7 @@ public class PretServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList Prets = PretDAO.GetAllPret();
         request.setAttribute("Prets", Prets);
+        request.setAttribute("menu_pret_active", true);
 
         this.getServletContext().getRequestDispatcher("/views/PretView.jsp").forward(request, response);
     }
