@@ -131,9 +131,7 @@ function addLecteur(_readerName, _emailReader, _fonctionReader, _mobileReader){
                 if(response.requestStatusCode == 201){
                     let inputs = $("input")
                     for(let i=0; i<inputs.length; i++){
-                        if(inputs[i].type == "text"){
                             inputs[i].value = ""
-                        }
                     }
                     showAlert(response.sucessMsg)
                 }
