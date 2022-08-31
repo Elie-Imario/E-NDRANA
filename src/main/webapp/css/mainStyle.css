@@ -185,8 +185,14 @@ span.close-btn:hover i {
     color: rgb(235, 28, 28);
     width: 100%;
     text-align: center;
-    display: none;
+    display: block;
     margin-bottom: 25px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.alert-wrapper.show{
+    opacity: 1;
 }
 
 .error-msg{
@@ -681,7 +687,6 @@ table tbody{
 
 .incorrect{
     transform: scale(1);
-    color: red;
     border: 2px solid rgba(255, 0, 0, 0.685);
     box-shadow: 0rem 0.1rem 0.2rem 0.1rem rgba(255, 0, 0, 0.685);
 }

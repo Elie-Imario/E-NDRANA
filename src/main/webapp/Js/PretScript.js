@@ -174,28 +174,46 @@ $(document).ready(function(){
     })
 
     $("#addPret").click(function() {
-        EffectuerPret()
+        let readername = $("input[name='readerNametoAdd']")
+        let titlebook = $("input[name='titleBooktoAdd']")
+        let datedebutpret = $("input[name='datedebutPrettoAdd']")
+        let datefinpret = $("input[name='datefinPrettoAdd']")
+        if(isAddFormValid(readername, titlebook, datedebutpret, datefinpret)){
+            fadeAlertMsg()
+            EffectuerPret()
+        }
     })
 
     $(".btn-close-addPret").click(function() {
+        fadeAlertMsg()
         closePretAddModal()
     })
 
     $("#cancelAdd").click(function () {
+        fadeAlertMsg()
         closePretAddModal()
     })
 
     //UPDATE PRET
 
     $("#editPret").click(function () {
-        UpdatePret()
+        let _titleBook = $("input[name='titleBook']")
+        let _datedeb = $("input[name='datedebutPret']")
+        let _datefin = $("input[name='datefinPret']")
+
+        if(isEditFormValid(_titleBook, _datedeb, _datefin)){
+            fadeAlertMsg()
+            UpdatePret()
+        }
     })
 
     $(".btn-close-EditPret").click(function() {
+        fadeAlertMsg()
         closePretEditModal()
     })
 
     $("#cancelEdit").click(function () {
+        fadeAlertMsg()
         closePretEditModal()
     })
     //ALERT
@@ -369,7 +387,7 @@ function getTitleBook(){
 
 function EffectuerPret(){
     let _readername = $("input[name='readerNametoAdd']").val()
-    let _titebook = $("input[name='titleBooktoAdd']").val()
+    let _titlebook = $("input[name='titleBooktoAdd']").val()
     let _datedebutpret = $("input[name='datedebutPrettoAdd']").val()
     let _datefinpret = $("input[name='datefinPrettoAdd']").val()
     let _nbJourPret = $("input[name='nbJourPrettoAdd']").val()
@@ -379,7 +397,7 @@ function EffectuerPret(){
         type: "POST",
         data:{
             readername: _readername,
-            titebook: _titebook,
+            titlebook: _titlebook,
             datedebutpret: _datedebutpret,
             datefinpret: _datefinpret,
             nbJourPret: _nbJourPret,
@@ -413,7 +431,11 @@ function EffectuerPret(){
                         }
                     })
                     closePretAddModal()
-                    setTimeout(()=> { showSuccessAlert(response.sucessMsg) }, 500)
+                    let inputs = $("input")
+                    for(let i=0; i<inputs.length; i++){
+                        inputs[i].value = ""
+                    }
+                    showSuccessAlert(response.sucessMsg)
                 }
             })
         }
@@ -453,21 +475,21 @@ function UpdatePret() {
         dataType: "json",
         success: function (data) {
             $.each(data, (index, response)=>{
-                let AmendePret;
                 if (response.requestStatusCode == 200) {
                     let row = $("#row" + _idPret + "")
-
+                    let Action
+                    let EtatPret
                     if (_etatPret == 1) {
-                        var Action = '<div class="tableListPret-button-group">' +
+                        Action = '<div class="tableListPret-button-group">' +
                             '<button type="button" class="tableListPret-btn-item" onclick="initUpdatePret(' + _idPret + ')"><span><i class="fa fa-user-edit"></i></span>Modifier</button>' +
                             '<button type="button" class="tableListPret-btn-item" onclick="deletePret(' + _idPret + ')"><span><i class="fa fa-times"></i></span>Supprimer</button>' +
                             '</div>'
-                        var EtatPret = "En cours"
+                        EtatPret = "En cours"
                     } else {
-                        var Action = '<div class="tableListPret-button-group">' +
+                        Action = '<div class="tableListPret-button-group">' +
                             '<button type="button" class="tableListPret-btn-item" onclick="deletePret(' + _idPret + ')"><span><i class="fa fa-times"></i></span>Supprimer</button>' +
                             '</div>'
-                        var EtatPret = "Terminé"
+                        EtatPret = "Terminé"
 
                     }
 
@@ -479,10 +501,10 @@ function UpdatePret() {
 
                     $(".tablelistPret").DataTable().row(row).data(newData).draw(false)
                     closePretEditModal()
-                    setTimeout(() => {
-                        showSuccessAlert(response.sucessMsg)
-                    }, 500)
 
+
+                    showSuccessAlert(response.sucessMsg)
+                    //$(document).attr('href', "list_Pret")
                 }
             })
         }
@@ -508,6 +530,29 @@ function showSuccessAlert(alertMsg){
 
     clearInterval()
 }
+function deletePret(IdPret){
+    if(confirm("Voulez-vous supprimer le pret `L/"+IdPret+"`?")){
+        $.ajax({
+            type: "POST",
+            data: {
+                Id_Pret: IdPret,
+                RequestType: "DeletePret"
+            },
+            url: "list_Pret",
+            cache: false,
+            dataType: "json",
+            success:function (data) {
+                $.each(data, (index, response)=>{
+                    if(response.requestStatusCode == 204){
+                        let row = $("#row"+IdPret+"")
+                        $(".tablelistPret").dataTable().fnDeleteRow(row)
+                        showSuccessAlert(response.sucessMsg)
+                    }
+                })
+            }
+        })
+    }
+}
 
 function closeAlertSuccess(){
     $(".alert-success").removeClass("displayed")
@@ -515,6 +560,8 @@ function closeAlertSuccess(){
 }
 
 function showPretAddModal(){
+    clearInputClassError()
+    fadeAlertMsg()
     if ($(".modalPopUp.modalAddPretPopUp").hasClass("fade")) {
         $(".modalPopUp.modalAddPretPopUp").removeClass("fade")
         $(".modalPopUp.modalAddPretPopUp").addClass("show")
@@ -535,6 +582,8 @@ function closePretAddModal(){
 
 
 function showPretEditModal(){
+    clearInputClassError()
+    fadeAlertMsg()
     if ($(".modalPopUp.modalEditPretPopUp").hasClass("fade")) {
         $(".modalPopUp.modalEditPretPopUp").removeClass("fade")
         $(".modalPopUp.modalEditPretPopUp").addClass("show")
@@ -554,4 +603,126 @@ function closePretEditModal(){
     $("body").removeClass("modal-open")
 }
 
+
+/* GESTION DES ERREURS */
+function animateForm(input){
+    input.addClass("incorrect")
+    input.css('animation', "bounce-in 1.15s ease")
+    input.on('animationend', function(){
+        input.css('animation', "")
+    })
+}
+
+
+function isAddFormValid(input1, input2, input3, input4){
+    clearInputClassError()
+
+    let errorWrapper = $(".alert-wrapper")
+    let errorMsg = $(".error-msg")
+
+    if((input1.val() == "") && (input2.val() == "") && (input3.val() == "") && (input4.val() == "") ){
+        animateForm(input1)
+        animateForm(input2)
+        animateForm(input4)
+        animateForm(input3)
+
+        displayErrorMsg(errorWrapper, errorMsg, "Ces champs sont obligatoires!")
+        return false
+    }
+
+    else if(input3.val() == "" && input4.val() == ""){
+        animateForm(input3)
+        animateForm(input4)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez rensigner la date de debut et de la fin du prêt!")
+        return false
+    }
+    else if(input1.val() == ""){
+        animateForm(input1)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner le nom du Lecteur!")
+        return false
+    }
+    else if(input2.val() == ""){
+        animateForm(input2)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner le titre de l'Ouvrage!")
+        return false
+    }
+    else if(input3.val() == ""){
+        animateForm(input3)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez rensigner la date de debut du prêt!")
+        return false
+    }
+
+    else if(input4.val() == ""){
+        animateForm(input4)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez rensigner la date de la fin du prêt!")
+        return false
+    }
+    else{
+
+        return true
+    }
+}
+
+function isEditFormValid(input1, input2, input3){
+    clearInputClassError()
+
+    let errorWrapper = $(".alert-wrapper")
+    let errorMsg = $(".error-msg")
+
+    if((input1.val() == "") && (input2.val() == "") && (input3.val() == "") ){
+        animateForm(input1)
+        animateForm(input2)
+        animateForm(input3)
+
+        displayErrorMsg(errorWrapper, errorMsg, "Ces champs sont obligatoires!")
+        return false
+    }
+
+    else if(input2.val() == "" && input3.val() == ""){
+        animateForm(input3)
+        animateForm(input4)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez rensigner la date de debut et de la fin du prêt!")
+        return false
+    }
+
+    else if(input1.val() == ""){
+        animateForm(input1)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner le titre de l'Ouvrage!")
+        return false
+    }
+    else if(input2.val() == ""){
+        animateForm(input2)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez rensigner la date de debut du prêt!")
+        return false
+    }
+
+    else if(input3.val() == ""){
+        animateForm(input3)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez rensigner la date de la fin du prêt!")
+        return false
+    }
+    else{
+        return true
+    }
+}
+
+
+function clearInputClassError(){
+    const inputs = $("input")
+    if(inputs.hasClass("incorrect")){
+        inputs.removeClass("incorrect")
+    }
+}
+
+
+function displayErrorMsg(container, errorMsg, msg){
+    container.addClass("show")
+    errorMsg.text(msg)
+}
+
+function fadeAlertMsg(){
+    if($(".alert-wrapper").hasClass("show")){
+        $(".alert-wrapper").removeClass("show")
+    }
+}
 

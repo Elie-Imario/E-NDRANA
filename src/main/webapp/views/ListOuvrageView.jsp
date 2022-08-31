@@ -214,6 +214,10 @@
                                     </button>
                                 </div>
                             </form>
+                            <div class="alert-wrapper">
+                                <i class="fa fa-exclamation-circle"></i>
+                                <span class="error-msg"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -224,6 +228,8 @@
 
     </div>
 </section>
+
+<script src="Js/OuvrageScript.js"></script>
 </body>
 
 </html>

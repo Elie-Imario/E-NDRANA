@@ -28,13 +28,13 @@
                     <div class="form-group">
                         <div class="input_group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input type="text" class="form-control" id="login_InputField" name="login" placeholder="Utilisateur" required>
+                            <input type="text" class="form-control" id="login_InputField" name="login" placeholder="Utilisateur">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input_group">
                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                            <input type="password" class="form-control" id="password_InputField" name="password" placeholder="Mot de passe" required>
+                            <input type="password" class="form-control" id="password_InputField" name="password" placeholder="Mot de passe">
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
         </div>
         <div class="alert-wrapper">
             <i class="fa fa-exclamation-circle"></i>
-            <span class="alert-msg"></span>
+            <span class="error-msg"></span>
         </div>
     </div>
 

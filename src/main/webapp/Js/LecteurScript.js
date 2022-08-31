@@ -51,8 +51,8 @@ $(document).ready(function (){
         let fonctionReader = $("input[name='readerFonctionToAdd']")
         let mobileReader = $("input[name='readerMobileToAdd']")
 
-        console.log(mobileReader.length)
-        if(isValidForm(readerName, emailReader, fonctionReader, mobileReader)){
+        if(isFormValid(readerName, emailReader, fonctionReader, mobileReader)){
+            fadeAlertMsg()
             addLecteur(readerName, emailReader, fonctionReader, mobileReader)
             console.log("no error")
         }
@@ -61,9 +61,26 @@ $(document).ready(function (){
         }
     })
 
+    $("#cancelAdd").click(function () {
+        clearInputClassError()
+        fadeAlertMsg()
+    })
+
     //UPDATE LECTEUR
     $("#editLecteur").click(function (){
-        updateLecteur()
+        let readerName = $("input[name='readerName']")
+        let emailReader = $("input[name='readerEmail']")
+        let fonctionReader = $("input[name='readerFonction']")
+        let mobileReader = $("input[name='readerMobile']")
+
+        if(isFormValid(readerName, emailReader, fonctionReader, mobileReader)){
+            fadeAlertMsg()
+            updateLecteur(readerName, emailReader, fonctionReader, mobileReader)
+            console.log("no error")
+        }
+        else{
+            console.log("error")
+        }
     })
 
     $("#cancelEdit").click(function (){
@@ -140,20 +157,17 @@ function addLecteur(_readerName, _emailReader, _fonctionReader, _mobileReader){
     })
 }
 
-function updateLecteur(){
+function updateLecteur(_readerName, _emailReader, _fonctionReader, _mobileReader){
     let IndexLecteurToUpdate = $("input[name='IdLecteur']").val()
-    let readerName = $("input[name='readerName']").val()
-    let emailReader = $("input[name='readerEmail']").val()
-    let fonctionReader = $("input[name='readerFonction']").val()
-    let mobileReader = $("input[name='readerMobile']").val()
+
     $.ajax({
         type: "POST",
         data:{
             IdLecteur: IndexLecteurToUpdate,
-            nomLecteur: readerName,
-            emailLecteur: emailReader,
-            fonctionLecteur : fonctionReader,
-            mobileLecteur : mobileReader,
+            nomLecteur: _readerName.val(),
+            emailLecteur: _emailReader.val(),
+            fonctionLecteur : _fonctionReader.val(),
+            mobileLecteur : _mobileReader.val(),
             RequestType: "UpdateLecteur"
         },
         url: "list_Lecteur",
@@ -168,11 +182,11 @@ function updateLecteur(){
                                     '<button type="button" class="tableListLecteur-btn-item" onclick="initUpdateLecteur('+ IndexLecteurToUpdate +')"><span><i class="fa fa-user-edit"></i></span>Modifier</button>'+
                                     '<button type="button" class="tableListLecteur-btn-item" onclick="deleteLecteur('+ IndexLecteurToUpdate +')"><span><i class="fa fa-times"></i></span>Supprimer</button>'+
                                 '</div>'
-                    let newData = ["LEC-"+IndexLecteurToUpdate, readerName, fonctionReader, mobileReader, Action]
+                    let newData = ["LEC-"+IndexLecteurToUpdate, _readerName.val(), _fonctionReader.val(), _mobileReader.val(), Action]
 
                     $(".tablelistLecteur").DataTable().row(row).data(newData).draw(false)
                     closeLecteurEditModal()
-                    setTimeout(()=> { showAlert(response.sucessMsg) }, 500)
+                    showAlert(response.sucessMsg)
                 }
             })
         }
@@ -246,7 +260,7 @@ function deleteLecteur(IdLecteur){
                     if(response.requestStatusCode == 204){
                         let row = $("#row"+IdLecteur+"")
                         $("table").dataTable().fnDeleteRow(row)
-                        setTimeout(()=> { showAlert(response.sucessMsg) }, 100)
+                        showAlert(response.sucessMsg)
 
                     }
                 })
@@ -275,6 +289,8 @@ function closeLecteurDetailModal(){
 
 
 function showLecteurEditModal(){
+    clearInputClassError()
+    fadeAlertMsg()
     if ($(".modalPopUp.modalEditLecteurPopUp").hasClass("fade")) {
         $(".modalPopUp.modalEditLecteurPopUp").removeClass("fade")
         $(".modalPopUp.modalEditLecteurPopUp").addClass("show")
@@ -317,49 +333,77 @@ function closeAlertSuccess(){
 }
 
 
-function isValidForm(readerName, emailReader, fonctionReader, mobileReader){
-    if( readerName.val() == "" && fonctionReader.val() == "" && mobileReader.val() == ""){
-        $(".error-msg").text("Ces champs sont obligatoires!")
-        return false;
-    }
-    else if(readerName.val() == ""){
-        $(".error-msg").text("Veuillez renseigner le nom du Lecteur!")
+/* GESTION DES ERREURS */
+function animateForm(input){
+    input.addClass("incorrect")
+    input.css('animation', "bounce-in 1.15s ease")
+    input.on('animationend', function(){
+        input.css('animation', "")
+    })
+}
+
+
+function isFormValid(input1, input2, input3, input4){
+    clearInputClassError()
+
+    let errorWrapper = $(".alert-wrapper")
+    let errorMsg = $(".error-msg")
+
+    if((input1.val() == "") && (input3.val() == "") && (input4.val() == "") ){
+        animateForm(input1)
+        animateForm(input3)
+        animateForm(input4)
+
+        displayErrorMsg(errorWrapper, errorMsg, "Ces champs sont obligatoires!")
         return false
     }
-    else if(fonctionReader.val() == ""){
-        $(".error-msg").text("Veuillez renseigner la fonction exercée par le Lecteur!")
+
+    else if(input1.val() == ""){
+        animateForm(input1)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner le nom du Lecteur!")
         return false
     }
-    else if(mobileReader.val() == ""){
-        $(".error-msg").text("Veuillez renseigner le mobile du Lecteur!")
+
+    else if(input3.val() == ""){
+        animateForm(input3)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner la fonction exercée par le Lecteur!")
         return false
     }
-    else if( readerName.val() != "" && fonctionReader.val() != "" && mobileReader.val() != ""){
-        if(emailReader.val() != ""){
-            if(!isValidEMail(emailReader.val())){
-                $(".error-msg").text("Veuillez renseigner une adresse éléctronique valide!")
-                return false
-            }
-        }
-        else if(mobileReader.val().length < 10){
-            $(".error-msg").text("Le numero du Lecteur doit être de 10 caractères!!")
-            return false
-        }
-        else if(mobileReader.val().length > 10){
-            if(!isMobileValid(mobileReader.val())){
-                $(".error-msg").text("Le numero est incorrect!!")
-                return false
-            }
-        }
+
+    else if(input4.val() == ""){
+        animateForm(input4)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner le mobile du Lecteur!")
+        return false
+    }
+
+    else if(input2.val()!= "" && !isValidEMail(input2.val())){
+        animateForm(input2)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner une adresse éléctronique valide!")
+        return false
+    }
+    else if(input4.val()!= "" && !isMobileValid(input4.val())){
+        animateForm(input4)
+        displayErrorMsg(errorWrapper, errorMsg, "Le numero est incorrect!!")
+        return false
+    }
+    
+    else{
+       
         return true
     }
+}
 
 
+function clearInputClassError(){
+    const inputs = $("input")
+    if(inputs.hasClass("incorrect")){
+        inputs.removeClass("incorrect")
+    }
 }
 
 
 function isValidEMail(email){
-    const emailRegEx = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/
+    const emailRegEx = /^[A-Za-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/
 
     if(emailRegEx.test(email)){
         return true;
@@ -371,6 +415,18 @@ function isMobileValid(usermobile){
     const phoneRegEx = /^(03[2-4]) (\d{2}) (\d{3}) (\d{2})$/
     if(phoneRegEx.test(usermobile)){
         return true
+    }else{
+        return false
     }
-    return false
+}
+
+function displayErrorMsg(container, errorMsg, msg){
+    container.addClass("show")
+    errorMsg.text(msg)
+}
+
+function fadeAlertMsg(){
+    if($(".alert-wrapper").hasClass("show")){
+        $(".alert-wrapper").removeClass("show")
+    }
 }

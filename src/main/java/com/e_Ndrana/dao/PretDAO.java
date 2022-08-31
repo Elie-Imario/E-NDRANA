@@ -32,7 +32,7 @@ public class PretDAO {
     public static ArrayList get_titleBookSuggestion(){
         ArrayList _titleBook = new ArrayList();
         Connection connection = connectToDatabase.getInstance();
-        String query = "SELECT * FROM Livre WHERE Disponible = TRUE";
+        String query = "SELECT * FROM Livre";
         try {
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet resultSet = statement.executeQuery(query);
@@ -723,6 +723,109 @@ public class PretDAO {
             e.printStackTrace();
         }
         return Total;
+    }
+
+    public static void DeletePret(int id){
+        Connection connection = connectToDatabase.getInstance();
+        String query = "DELETE FROM Pret WHERE Id_Pret=?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public static Boolean VerifyLecteur(String _nomLecteur){
+        Connection connection = connectToDatabase.getInstance();
+        String query = "SELECT * FROM Lecteur WHERE Nom_Lecteur ="+"'"+_nomLecteur+"'"+"";
+        try {
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if(resultSet.next()){
+                statement.close();
+                return true;
+            }
+            else{
+                statement.close();
+                return false;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static boolean isNbPretEnCoursValid(String _nomLecteur){
+        Connection connection = connectToDatabase.getInstance();
+        String query = "SELECT * FROM Lecteur WHERE Nom_Lecteur ="+"'"+_nomLecteur+"'"+"AND NbPretEnCours<3" ;
+        try {
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if(resultSet.next()){
+                statement.close();
+                return true;
+            }
+            else{
+                statement.close();
+                return false;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static Boolean VerifyLivre(String _titleBook){
+        Connection connection = connectToDatabase.getInstance();
+        String query = "SELECT * FROM Livre WHERE Titre_Ouvrage="+"\""+_titleBook+"\""+"";
+        try {
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if(resultSet.next()){
+                statement.close();
+                return true;
+            }
+            else{
+                statement.close();
+                return false;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static boolean isLivreDisponible(String _titleBook){
+        Connection connection = connectToDatabase.getInstance();
+        String query = "SELECT Disponible  FROM Livre WHERE Titre_Ouvrage ="+"\""+_titleBook+"\""+"";
+        try {
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet resultSet = statement.executeQuery(query);
+
+            if(resultSet.next()){
+                if(resultSet.getBoolean("Disponible")){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            return false;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
 }

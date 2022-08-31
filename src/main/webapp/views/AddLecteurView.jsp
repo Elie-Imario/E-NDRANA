@@ -76,6 +76,7 @@
 
         </div>
     </section>
+    <script src="Js/LecteurScript.js"></script>
 </body>
 
 </html>

@@ -61,8 +61,6 @@ public class ListLecteurServlet extends HttpServlet {
 
         _dataResponse.add(dataResponse);
 
-        System.out.println(_dataResponse);
-
         String JsonResponse = new Gson().toJson(_dataResponse);
 
         System.out.println(JsonResponse);

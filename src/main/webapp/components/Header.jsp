@@ -63,10 +63,6 @@
     <!-- -->
 
     <!-- Components scripts -->
-    <script src="Js/LecteurScript.js"></script>
-    <script src="Js/OuvrageScript.js"></script>
-    <script src="Js/PretScript.js"></script>
-    <script src="Js/Scripts.js"></script>
     <script src="Js/Accordionscript.js"></script>
     <!-- -->
 

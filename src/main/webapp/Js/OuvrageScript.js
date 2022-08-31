@@ -53,12 +53,29 @@ $(document).ready(function () {
 
     //ADD BOOK
     $("#addBook").click(function (){
-        addOuvrage()
+        let newTitleBook = $("input[name='titleBookToAdd']")
+        let newAuthorName = $("input[name='AuthorNameToAdd']")
+        let newDateEdition = $("input[name='dateEditionToAdd']")
+
+        if(isFormValid(newTitleBook, newAuthorName, newDateEdition)){
+            fadeAlertMsg()
+            addOuvrage(newTitleBook, newAuthorName, newDateEdition)
+        }
+    })
+
+    $("#cancelAdd").click(function () {
+        clearInputClassError()
+        fadeAlertMsg()
     })
 
     //UPDATE BOOK
     $("#editBook").click(function () {
-        updateBook()
+        let _titleBook = $("input[name='titleBook']")
+        let _authorName = $("input[name='authorBook']")
+        let _dateedition = $("input[name='dateEditionBook']")
+        if(isFormValid(_titleBook, _authorName, _dateedition)){
+            updateBook()
+        }
     })
 
     //RECHERCHE
@@ -75,17 +92,13 @@ $(document).ready(function () {
 
 })
 
-function addOuvrage(){
-    let newTitleBook = $("input[name='titleBookToAdd']").val()
-    let newAuthorName = $("input[name='AuthorNameToAdd']").val()
-    let newDateEdition = $("input[name='dateEditionToAdd']").val()
-
+function addOuvrage(_newTitleBook, _newAuthorName, _newDateEdition){
     $.ajax({
         type: "POST",
         data: {
-            titleBook : newTitleBook,
-            authorName : newAuthorName,
-            dateEdtion : newDateEdition,
+            titleBook : _newTitleBook.val(),
+            authorName : _newAuthorName.val(),
+            dateEdtion : _newDateEdition.val(),
             RequestType: "AddOuvrage"
         },
         url: "add_Ouvrage",
@@ -164,7 +177,7 @@ function updateBook(){
 
                     $(".tablelistOuvrage").DataTable().row(row).data(newData).draw(false)
                     closeBookEditModal()
-                    setTimeout(()=> { showSuccessAlert(response.sucessMsg) }, 500)
+                    showSuccessAlert(response.sucessMsg)
                 }
             })
         }
@@ -214,8 +227,7 @@ function deleteLivre(IdBook){
                     if(response.requestStatusCode == 204){
                         let row = $("#row"+IdBook+"")
                         $(".tablelistOuvrage").dataTable().fnDeleteRow(row)
-                        setTimeout(()=> { showAlert(response.sucessMsg) }, 100)
-
+                        showSuccessAlert(response.sucessMsg)
                     }
                 })
             }
@@ -244,6 +256,8 @@ function closeBookDetailModal(){
 
 
 function showBookEditModal(){
+    clearInputClassError()
+    fadeAlertMsg()
     if ($(".modalPopUp.modalEditOuvragePopUp").hasClass("fade")) {
         $(".modalPopUp.modalEditOuvragePopUp").removeClass("fade")
         $(".modalPopUp.modalEditOuvragePopUp").addClass("show")
@@ -282,4 +296,76 @@ function showSuccessAlert(alertMsg){
 function closeAlertSuccess(){
     $(".alert-success").removeClass("displayed")
     $(".alert-success").addClass("disappered")
+}
+
+/* GESTION DES ERREURS */
+function animateForm(input){
+    input.addClass("incorrect")
+    input.css('animation', "bounce-in 1.15s ease")
+    input.on('animationend', function(){
+        input.css('animation', "")
+    })
+}
+
+
+function isFormValid(input1, input2, input3){
+    clearInputClassError()
+
+    let errorWrapper = $(".alert-wrapper")
+    let errorMsg = $(".error-msg")
+
+    if((input1.val() == "") && (input2.val() == "") && (input3.val() == "") ){
+        animateForm(input1)
+        animateForm(input2)
+        animateForm(input3)
+
+        displayErrorMsg(errorWrapper, errorMsg, "Ces champs sont obligatoires!")
+        return false
+    }
+
+    else if(input1.val() == ""){
+        animateForm(input1)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner le titre de l'Ouvrage!")
+        return false
+    }
+
+    else if(input2.val() == ""){
+        animateForm(input2)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner le nom de l'auteur de l'Ouvrage!")
+        return false
+    }
+
+    else if(input3.val() == ""){
+        animateForm(input3)
+        displayErrorMsg(errorWrapper, errorMsg, "Veuillez renseigner la date d'edition de l'Ouvrage!")
+        return false
+    }
+
+    else{
+
+        return true
+    }
+}
+
+
+function clearInputClassError(){
+    const inputs = $("input")
+    if(inputs.hasClass("incorrect")){
+        inputs.removeClass("incorrect")
+    }
+}
+
+
+function isDateValid(date){
+
+}
+function displayErrorMsg(container, errorMsg, msg){
+    container.addClass("show")
+    errorMsg.text(msg)
+}
+
+function fadeAlertMsg(){
+    if($(".alert-wrapper").hasClass("show")){
+        $(".alert-wrapper").removeClass("show")
+    }
 }

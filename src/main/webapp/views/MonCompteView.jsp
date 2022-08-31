@@ -66,6 +66,10 @@
                             </button>
                         </div>
                     </form>
+                    <div class="alert-wrapper">
+                        <i class="fa fa-exclamation-circle"></i>
+                        <span class="error-msg"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,7 +78,7 @@
 </section>
 
 
-<script src="Js/MonCompteScript.js" type="text/javascript"></script>
+<script src="Js/Scripts.js"></script>
 </body>
 
 </html>
